@@ -94,7 +94,7 @@ setup(
 		},
 	
 	install_requires = [
-			'cinje',
+			'cinje-develop',
 		],
 	
 	extras_require = dict(
@@ -103,7 +103,9 @@ setup(
 	
 	tests_require = tests_require,
 	
-	dependency_links = [],
+	dependency_links = [
+			'git+https://github.com/marrow/cinje.git@develop#egg=cinje-develop',
+		],
 	
 	zip_safe = True,
 	cmdclass = dict(
