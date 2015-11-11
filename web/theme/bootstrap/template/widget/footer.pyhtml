@@ -1,0 +1,6 @@
+:: #@ARGS indent, asset
+<footer class="footer${' chyron' if asset.fixed else ''}">
+	<div class="container">
+#{indent(asset.__html__(), "\t\t")}
+	</div>
+</footer>

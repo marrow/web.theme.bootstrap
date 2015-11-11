@@ -1,0 +1,4 @@
+:: #@ARGS kind, label, message
+<div class="alert alert-${kind}" role="alert">
+	<strong>${label}</strong> ${message}
+</div>

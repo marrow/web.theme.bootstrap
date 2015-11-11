@@ -1,0 +1,2 @@
+:: #@ARGS label, size, kind
+<button type="button" class="btn${(' btn-' + size) if size else ''}${(' btn-' + kind) if kind else ''}">${label}</button>

@@ -1,0 +1,4 @@
+:: #@ARGS label
+<div class="page-header">
+	<h2>${label}</h2>
+</div>

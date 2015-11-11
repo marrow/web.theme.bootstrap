@@ -1,0 +1,12 @@
+:: #@ARGS current, minimum, maximum, label, kind
+:: if not isinstance(current, (list, tuple)):
+<div class="progress">
+	<div class="progress-bar${(' progress-bar-' + kind) if kind else ''}" role="progressbar" aria-valuenow="${current}" aria-valuemin="${_context.get('minimum', 0)}" aria-valuemax="${_context.get('maximum', 100)}" style="width: ${current * 100 / maximum}%;"><span class="sr-only">${_context.get('label', "{percent} Complete").format(percent=current * 100 / maximum)}</span></div>
+</div>
+:: else:
+<div class="progress">
+	:: for value, series in current:
+	<div class="progress-bar progress-bar-${series}" style="width: ${value * 100 / maximum}%"><span class="sr-only">${_context.get('label', "{percent} Complete").format(percent=value * 100 / maximum)}</span></div>
+	:: #endfor
+</div>
+:: #endif

@@ -1,0 +1,16 @@
+:: #@ARGS style, active, items
+<ul class="list-group">
+	:: for i, item in enumerate(items):
+	:: l = len(item) if isinstance(item, tuple) else 1
+	:: if l == 1:
+	<li class="list-group-item${' active' if i == active else ''}">${item}</li>
+	:: elif l == 2:
+	<a href="${item[1]}" class="list-group-item${' active' if i == active else ''}">${item[0]}</a>
+	:: elif l == 3:
+	<a href="${item[1]}" class="list-group-item${' active' if i == active else ''}">
+		<h4 class="list-group-item-heading">${item[0]}</h4>
+		<p class="list-group-item-text">${item[2]}</p>
+	</a>
+	:: #endif
+	:: #endfor
+</ul>

@@ -1,0 +1,272 @@
+:: #@ARGS asset
+:: _context['_layout'] = asset.theme + 'master'
+
+<style>
+body {
+  padding-top: 70px;
+  padding-bottom: 30px;
+}
+
+.theme-dropdown .dropdown-menu {
+  position: static;
+  display: block;
+  margin-bottom: 20px;
+}
+
+.theme-showcase > p > .btn {
+  margin: 5px 0;
+}
+
+.theme-showcase .navbar .container {
+  width: auto;
+}
+</style>
+
+
+
+:: include(asset.theme + 'widget.navbar_ex')
+
+:: include(asset.theme + 'widget.jumbotron')
+
+
+
+<div class="container theme-showcase" role="main">
+	
+	:: include(asset.theme + 'widget.pageheader', label="Buttons")
+	
+	<p>
+		:: include(asset.theme + 'widget.button', size='lg', kind="default", label="Default")
+		:: include(asset.theme + 'widget.button', size='lg', kind="primary", label="Primary")
+		:: include(asset.theme + 'widget.button', size='lg', kind="success", label="Success")
+		:: include(asset.theme + 'widget.button', size='lg', kind="info", label="Info")
+		:: include(asset.theme + 'widget.button', size='lg', kind="warning", label="Warning")
+		:: include(asset.theme + 'widget.button', size='lg', kind="danger", label="Danger")
+		:: include(asset.theme + 'widget.button', size='lg', kind="link", label="Link")
+	</p>
+	
+	<p>
+		:: include(asset.theme + 'widget.button', kind="default", label="Default")
+		:: include(asset.theme + 'widget.button', kind="primary", label="Primary")
+		:: include(asset.theme + 'widget.button', kind="success", label="Success")
+		:: include(asset.theme + 'widget.button', kind="info", label="Info")
+		:: include(asset.theme + 'widget.button', kind="warning", label="Warning")
+		:: include(asset.theme + 'widget.button', kind="danger", label="Danger")
+		:: include(asset.theme + 'widget.button', kind="link", label="Link")
+	</p>
+	
+	<p>
+		:: include(asset.theme + 'widget.button', size='sm', kind="default", label="Default")
+		:: include(asset.theme + 'widget.button', size='sm', kind="primary", label="Primary")
+		:: include(asset.theme + 'widget.button', size='sm', kind="success", label="Success")
+		:: include(asset.theme + 'widget.button', size='sm', kind="info", label="Info")
+		:: include(asset.theme + 'widget.button', size='sm', kind="warning", label="Warning")
+		:: include(asset.theme + 'widget.button', size='sm', kind="danger", label="Danger")
+		:: include(asset.theme + 'widget.button', size='sm', kind="link", label="Link")
+	</p>
+	
+	<p>
+		:: include(asset.theme + 'widget.button', size='xs', kind="default", label="Default")
+		:: include(asset.theme + 'widget.button', size='xs', kind="primary", label="Primary")
+		:: include(asset.theme + 'widget.button', size='xs', kind="success", label="Success")
+		:: include(asset.theme + 'widget.button', size='xs', kind="info", label="Info")
+		:: include(asset.theme + 'widget.button', size='xs', kind="warning", label="Warning")
+		:: include(asset.theme + 'widget.button', size='xs', kind="danger", label="Danger")
+		:: include(asset.theme + 'widget.button', size='xs', kind="link", label="Link")
+	</p>
+	
+	
+	:: include(asset.theme + 'widget.pageheader', label="Tables")
+	
+	:: fields = ('#', 'First Name', 'Last Name', 'Username')
+	:: data = ((1, 'Mark', 'Otto', '@mdo'), (2, 'Jacob', 'Thornton', '@fat'), (3, 'Larry', 'the Bird', '@twitter'))
+	
+	<div class="row">
+		<div class="col-md-6">
+			:: include(asset.theme + 'widget.table', fields=fields, data=data)
+		</div>
+		<div class="col-md-6">
+			:: include(asset.theme + 'widget.table', fields=fields, data=data, style="striped")
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="col-md-6">
+			:: include(asset.theme + 'widget.table', fields=fields, data=data, style="bordered")
+		</div>
+		<div class="col-md-6">
+			:: include(asset.theme + 'widget.table', fields=fields, data=data, style="condensed")
+		</div>
+	</div>
+	
+	
+	:: include(asset.theme + 'widget.pageheader', label="Labels")
+	
+	<h1>
+		:: include(asset.theme + 'widget.label', kind="default", label="Default")
+		:: include(asset.theme + 'widget.label', kind="primary", label="Primary")
+		:: include(asset.theme + 'widget.label', kind="success", label="Success")
+		:: include(asset.theme + 'widget.label', kind="info", label="Info")
+		:: include(asset.theme + 'widget.label', kind="warning", label="Warning")
+		:: include(asset.theme + 'widget.label', kind="danger", label="Danger")
+	</h1>
+	<h2>
+		:: include(asset.theme + 'widget.label', kind="default", label="Default")
+		:: include(asset.theme + 'widget.label', kind="primary", label="Primary")
+		:: include(asset.theme + 'widget.label', kind="success", label="Success")
+		:: include(asset.theme + 'widget.label', kind="info", label="Info")
+		:: include(asset.theme + 'widget.label', kind="warning", label="Warning")
+		:: include(asset.theme + 'widget.label', kind="danger", label="Danger")
+	</h2>
+	<h3>
+		:: include(asset.theme + 'widget.label', kind="default", label="Default")
+		:: include(asset.theme + 'widget.label', kind="primary", label="Primary")
+		:: include(asset.theme + 'widget.label', kind="success", label="Success")
+		:: include(asset.theme + 'widget.label', kind="info", label="Info")
+		:: include(asset.theme + 'widget.label', kind="warning", label="Warning")
+		:: include(asset.theme + 'widget.label', kind="danger", label="Danger")
+	</h3>
+	<h4>
+		:: include(asset.theme + 'widget.label', kind="default", label="Default")
+		:: include(asset.theme + 'widget.label', kind="primary", label="Primary")
+		:: include(asset.theme + 'widget.label', kind="success", label="Success")
+		:: include(asset.theme + 'widget.label', kind="info", label="Info")
+		:: include(asset.theme + 'widget.label', kind="warning", label="Warning")
+		:: include(asset.theme + 'widget.label', kind="danger", label="Danger")
+	</h4>
+	<h5>
+		:: include(asset.theme + 'widget.label', kind="default", label="Default")
+		:: include(asset.theme + 'widget.label', kind="primary", label="Primary")
+		:: include(asset.theme + 'widget.label', kind="success", label="Success")
+		:: include(asset.theme + 'widget.label', kind="info", label="Info")
+		:: include(asset.theme + 'widget.label', kind="warning", label="Warning")
+		:: include(asset.theme + 'widget.label', kind="danger", label="Danger")
+	</h5>
+	<h6>
+		:: include(asset.theme + 'widget.label', kind="default", label="Default")
+		:: include(asset.theme + 'widget.label', kind="primary", label="Primary")
+		:: include(asset.theme + 'widget.label', kind="success", label="Success")
+		:: include(asset.theme + 'widget.label', kind="info", label="Info")
+		:: include(asset.theme + 'widget.label', kind="warning", label="Warning")
+		:: include(asset.theme + 'widget.label', kind="danger", label="Danger")
+	</h6>
+	<p>
+		:: include(asset.theme + 'widget.label', kind="default", label="Default")
+		:: include(asset.theme + 'widget.label', kind="primary", label="Primary")
+		:: include(asset.theme + 'widget.label', kind="success", label="Success")
+		:: include(asset.theme + 'widget.label', kind="info", label="Info")
+		:: include(asset.theme + 'widget.label', kind="warning", label="Warning")
+		:: include(asset.theme + 'widget.label', kind="danger", label="Danger")
+	</p>
+	
+	
+	:: include(asset.theme + 'widget.pageheader', label="Drop-Down Menus")
+	
+	:: include(asset.theme + 'widget.dropdown')
+	
+	
+	:: include(asset.theme + 'widget.pageheader', label="Navs")
+	
+	:: include(asset.theme + 'widget.nav', style="tabs")
+	:: include(asset.theme + 'widget.nav', style="pills")
+	
+	
+	:: include(asset.theme + 'widget.pageheader', label="Navbars")
+	
+	:: include(asset.theme + 'widget.navbar', style="default")
+	:: include(asset.theme + 'widget.navbar', style="inverse")
+	
+	
+	:: include(asset.theme + 'widget.pageheader', label="Alerts")
+	
+	:: include(asset.theme + 'widget.alert', kind="success", label="Well done!", message="This alert needs your attention, but it's not super important.")
+	:: include(asset.theme + 'widget.alert', kind="info", label="Heads up!", message="You successfully read this important alert message.")
+	:: include(asset.theme + 'widget.alert', kind="warning", label="Warning!", message="Best check yo self, you're not looking too good.")
+	:: include(asset.theme + 'widget.alert', kind="danger", label="Oh snap!", message="Change a few things up and try submitting again.")
+	
+	
+	:: include(asset.theme + 'widget.pageheader', label="Progress Bars")
+	
+	:: include(asset.theme + 'widget.progress', current=60, minimum=0, maximum=100, label="{percent} Complete")
+	:: include(asset.theme + 'widget.progress', current=40, minimum=0, maximum=100, kind="success")
+	:: include(asset.theme + 'widget.progress', current=20, minimum=0, maximum=100, kind="info")
+	:: include(asset.theme + 'widget.progress', current=60, minimum=0, maximum=100, kind="warning")
+	:: include(asset.theme + 'widget.progress', current=80, minimum=0, maximum=100, kind="danger")
+	:: include(asset.theme + 'widget.progress', current=60, minimum=0, maximum=100, kind="striped")
+	:: include(asset.theme + 'widget.progress', current=((35, 'success'), (20, 'warning'), (10, 'danger')), minimum=0, maximum=100)
+	
+	
+	:: include(asset.theme + 'widget.pageheader', label="List Groups")
+	
+	<div class="row">
+		<div class="col-sm-4">
+			:: include(asset.theme + 'widget.listgroup', items=('Cras justo odio', 'Dapibus ac facilisis in', 'Morbi leo risus', 'Porta ac consectetur ac', 'Vestibulum at eros'))
+		</div>
+		<div class="col-sm-4">
+			:: include(asset.theme + 'widget.listgroup', active=0, items=(('Cras justo odio', '#'), ('Dapibus ac facilisis in', '#'), ('Morbi leo risus', '#'), ('Porta ac consectetur ac', '#'), ('Vestibulum at eros', '#')))
+		</div>
+		<div class="col-sm-4">
+			:: include(asset.theme + 'widget.listgroup', active=1, items=(('List group item heading', '#', 'Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.'), ) * 3)
+		</div>
+	</div>
+	
+	
+	:: include(asset.theme + 'widget.pageheader', label="List Groups")
+	
+	<div class="row">
+		<div class="col-sm-4">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">Panel title</h3>
+				</div>
+				<div class="panel-body">
+					Panel content
+				</div>
+			</div>
+			<div class="panel panel-primary">
+				<div class="panel-heading">
+					<h3 class="panel-title">Panel title</h3>
+				</div>
+				<div class="panel-body">
+					Panel content
+				</div>
+			</div>
+		</div><!-- /.col-sm-4 -->
+		<div class="col-sm-4">
+			<div class="panel panel-success">
+				<div class="panel-heading">
+					<h3 class="panel-title">Panel title</h3>
+				</div>
+				<div class="panel-body">
+					Panel content
+				</div>
+			</div>
+			<div class="panel panel-info">
+				<div class="panel-heading">
+					<h3 class="panel-title">Panel title</h3>
+				</div>
+				<div class="panel-body">
+					Panel content
+				</div>
+			</div>
+		</div><!-- /.col-sm-4 -->
+		<div class="col-sm-4">
+			<div class="panel panel-warning">
+				<div class="panel-heading">
+					<h3 class="panel-title">Panel title</h3>
+				</div>
+				<div class="panel-body">
+					Panel content
+				</div>
+			</div>
+			<div class="panel panel-danger">
+				<div class="panel-heading">
+					<h3 class="panel-title">Panel title</h3>
+				</div>
+				<div class="panel-body">
+					Panel content
+				</div>
+			</div>
+		</div><!-- /.col-sm-4 -->
+	</div>
+
+</div>

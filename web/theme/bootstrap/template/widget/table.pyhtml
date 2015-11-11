@@ -1,0 +1,19 @@
+:: #@ARGS fields, data, style
+<table class="table${(' table-' + ' table-'.join(style.split())) if style else ''}">
+	<thead>
+		<tr>
+			:: for field in fields:
+			<th>${field}</th>
+			:: #endfor
+		</tr>
+	</thead>
+	<tbody>
+		:: for row in data:
+		<tr>
+			:: for field in row:
+			<td>${field}</td>
+			:: #endfor
+		</tr>
+		:: #endfor
+	</tbody>
+</table>

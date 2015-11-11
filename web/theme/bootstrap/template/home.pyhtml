@@ -1,0 +1,666 @@
+:: #@ARGS asset, jobs, strip_tags, root, page
+:: _context['_layout'] = 'web.theme.bootstrap.template.master'
+
+<!-- css('cover') -->
+
+<style>
+html, body { height: 100%; background-color: #fff; cursor: default; }
+input, textarea { cursor: beam; }
+p:last-child { margin-bottom: 0; }
+h1:first-child, h2:first-child, h3:first-child, h4:first-child, h5:first-child, h6:first-child { margin-top: 0; }
+
+.ih-head { position: relative; overflow: hidden; text-align: center; z-index: 50; background-color: black; overflow: hidden; }
+
+.ih-head a { color: white; }
+
+.ih-head-large {}
+.ih-head-wrapper {}
+
+.ih-head video { position: absolute; bottom: 0; left: 50%; margin-left: -50%; min-height: 100%; min-width: 100%; z-index: -1; -webkit-filter: blur(3px); }
+
+.ih-head-content { position: relative; z-index: 10; text-shadow: 0 1px 3px rgba(0,0,0,.5), 0 1px 2px rgba(0,0,0,.75); margin: auto 0; }
+.ih-head-content > *, .ih-head footer { margin-right: auto; margin-left: auto; max-width: 960px; }
+
+.ih-head > .ih-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 100; -webkit-box-shadow: inset 0 0 100px red; box-shadow: inset 0 0 100px red; }
+
+.ih-head small { color: #ccc; }
+
+.ih-head header { padding: 0 20px; margin-top: 20px; }
+.ih-head section { }
+.ih-head-large section { margin-top: 40px; margin-bottom: 40px; padding: 0 30px; }
+.ih-head footer { display: none; padding: 10px 0 10px; }
+.ih-head.large footer { display: block; }
+.ih-head footer a { opacity: 0.5; }
+.ih-head footer a:hover { opacity: 1.0; }
+
+.ih-head nav { margin-top: 20px; }
+.ih-head nav > li {
+	margin-top: 10px;
+	display: inline-block;
+}
+.ih-head nav > li + li {
+	margin-left: 20px;
+}
+.ih-head nav > li > a {
+	padding-right: 0;
+	padding-left: 0;
+	font-size: 16px;
+	line-height: 1;
+	font-weight: bold;
+	color: white;
+	opacity: 0.5;
+	border-bottom: 2px solid transparent;
+	transition: opacity .25s ease-in-out;
+	-moz-transition: opacity .25s ease-in-out;
+	-webkit-transition: opacity .25s ease-in-out;
+}
+.ih-head nav > li > a:hover,
+.ih-head nav > li > a:focus {
+	text-decoration: none;
+	background-color: transparent;
+	border-bottom-color: #a9a9a9;
+	border-bottom-color: white;
+	opacity: 0.75;
+}
+.ih-head nav > .active > a,
+.ih-head nav > .active > a:hover,
+.ih-head nav > .active > a:focus {
+	color: #fff;
+	border-bottom-color: #fff;
+	opacity: 0.9;
+}
+
+.ih-head h1 {
+	line-height: 1;
+	margin-top: 10px;
+	margin-bottom: 0;
+}
+
+.ih-head h2 {
+	font-size: 31px;
+	margin-top: 0;
+	line-height: 1.4;
+}
+
+.ih-hero { color: white; }
+.ih-hero p.lead { margin-bottom: 60px }
+
+.ih-hero form { display: block; overflow: visible; margin: 0 0 80px; position: relative; z-index: 750; }
+
+.ih-hero input { width: 250px; overflow: visible; background-color: rgba(255,255,255,0.25); border: 2px solid rgba(255,255,255,0.33); -webkit-transition: background-color .5s ease-in-out, width .5s ease-in-out; color: black; -webkit-box-shadow: inset 0 0 20px rgba(0,0,0,0.2); box-shadow: inset 0 0 20px rgba(0,0,0,0.2); }
+.ih-hero input:focus { width: 350px; background-color: rgba(255,255,255,0.75); outline: none; }
+
+.ih-hero input::-webkit-input-placeholder { color: rgba(255,255,255,0.9); opacity: 1; text-align: center; -webkit-transition: color .5s ease-in-out; text-shadow: 0 0px 5px rgba(0,0,0,.75); }
+.ih-hero input:focus::-webkit-input-placeholder { color: transparent; overflow: visible; text-shadow: none; }
+
+.ih-hero input::-webkit-input-placeholder:before { display: block; height: 0px; overflow: visible; position: relative; bottom: 20px; opacity: 0; -webkit-transition: opacity 1s ease-in-out, bottom 1s ease-in-out; content: "Press enter to submit your search."; -webkit-transition-delay: .5s; }
+.ih-hero input::-webkit-input-placeholder:after { display: block; height: 0px; overflow: visible; position: relative; top: 20px; opacity: 0; -webkit-transition: opacity 1s ease-in-out, top 1s ease-in-out; -webkit-transition-delay: 1s; content: "Or, scroll down to browse."; }
+.ih-hero input:focus::-webkit-input-placeholder:before { color: white; bottom: 44px; opacity: 1; font-size: 14px; line-height: 1; text-shadow: 0 1px 2px rgba(0,0,0,.75); }
+.ih-hero input:focus::-webkit-input-placeholder:after { color: white; top: 30px; opacity: 1; font-size: 14px; line-height: 1; text-shadow: 0 1px 2px rgba(0,0,0,.75); }
+/*.ih-hero input:focus::-webkit-input-placeholder { opacity: 1; font-size: 0; }
+.ih-hero input:focus::-webkit-input-placeholder:after {  font-size: 18px; position: absolute; left: 260px; text-align: right; opacity: 0.75; content: "Press enter to search." } */
+
+
+
+.ih-hero input:-moz-placeholder {  }
+.ih-hero input::-moz-placeholder {  }
+.ih-hero input:-ms-input-placeholder {  }
+
+
+#featured { padding-top: 80px; background-color: #ddd; box-shadow: 0px 0px 20px rgba(0,0,0,0.125); }
+#featured .content { max-width: 960px; padding: 0 30px; margin: 0 auto; }
+#featured h3 { text-align: center; margin: 0 0 40px; font-size: 36px; }
+#featured h4 { line-height: 1.4; font-weight: 600; color: #8bf; }
+#featured h5 { line-height: 24px; margin-top: 2px; margin-bottom: 4px; }
+#featured .category { font-size: 16px; margin-top: 0.2em; margin-bottom: 1ex; font-weight: 500; }
+#featured i { display: inline-block; margin-top: 8px; }
+#featured .job-detail { max-height: 16.5em; overflow: hidden; text-overflow: ellipsis; }
+
+#all { padding-top: 80px; }
+#all .content { max-width: 960px; padding: 0 30px; margin: 0 auto; }
+#all h3 { text-align: center; margin: 0 0 40px; font-size: 36px; }
+#all h4 { line-height: inherit; font-size: 18px; font-weight: inherit; }
+#all h5 { line-height: 24px; margin-top: 2px; margin-bottom: 4px; }
+#all menu { margin: 0;  }
+#all menu a { font-weight: bold; display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+
+article footer { margin-top: 80px; padding: 20px 0; text-align: center; border-top: 1px solid #ccc; }
+article footer .content { max-width: 960px; margin: 0 auto; }
+article footer p, article footer menu, article footer li, article footer a { display: inline-block; }
+article footer a { font-weight: bold; margin-left: 20px; }
+
+
+@media (min-width: 640px) {
+	.ih-head h1 {
+		float: left;
+		margin-top: 0;
+	}
+	.ih-head nav {
+		float: right;
+		margin-top: 0;
+		margin-right: 20px;
+	}
+	
+}
+
+@media (min-width: 768px) {
+	#all h4 { line-height: inherit; font-size: inherit; font-weight: inherit; }
+	.ih-head h2 { font-size: 36px; }
+	
+}
+
+@media (min-width: 1050px) {
+	.ih-head h1 {
+		margin-top: 40px;
+		margin-bottom: 40px;
+	}
+	.ih-head nav {
+		margin-top: 40px;
+	}
+	.ih-hero p.lead { margin-bottom: 80px; }
+	.ih-hero form { margin-bottom: 90px; }
+}
+
+</style>
+
+<article>
+	
+	<div class="ih-head ih-head-large">
+		<div class="ih-head-wrapper">
+			<video autoplay loop poster="http://cl.ly/image/1T442t0x3D0q/poster.jpg" id="bgvid">
+				:: # <source src="polina.webm" type="video/webm">
+				<source src="http://cl.ly/0B270o3R2G3H/background.mp4" type="video/mp4">
+			</video>
+			<div class="ih-overlay"></div>
+			
+			<div class="ih-head-content">
+				<header class="clearfix">
+					<h1><a href="/">Careers</a><small> at <a href="http://alstom.com/">Alstom</a></small></h3>
+					<nav>
+						<li class="active"><a href="/">Home</a></li>
+						<li><a href="#featured">Featured</a></li>
+						<li><a href="#all">All Jobs</a></li>
+					</nav>
+				</header>
+				<section class="ih-hero" contenteditable>
+					
+					<h2>Quam mollis, porta amet.</h2>
+					
+					<p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maiores, alias, quo voluptates dicta quae iste beatae nobis fugit officiis accusamus vero pariatur esse autem est quia obcaecati tenetur vel eveniet!</p>
+					
+					<form>
+						<input type="search" class="input-lg" placeholder="Find your dream job today." data-prefix="Press enter to submit your search." data-suffix="Or, scroll down to browse.">
+					</form>
+					
+				</section>
+				<footer>
+					<p class="small text-muted">Video by <a href="https://www.youtube.com/watch?v=hdxkxi1o_A0">Hans vand den Bergh</a></p>
+				</footer>
+			</div>
+		</div>
+	</div>
+	
+	
+	<section id="featured">
+		
+		<div class="content">
+			<h3>Featured Positions</h3>
+			
+			<div class="featured container-fluid">
+				:: featured = list(jobs.only('r', 's', 't', 'd')[:6])
+				<div class="row">
+					:: for job in featured[:3]:
+					<div class="list-group col-sm-4">
+						<a href="/job/${job.reference}-${job.short}" class="job-detail list-group-item">
+							<h4 class="list-group-item-heading">${job.title['en']}</h4>
+							<p class="list-group-item-text category">Uncategorized</p>
+							<p class="list-group-item-text description">${strip_tags(job.description['en']).split('\n')[0]}</p>
+						</a>
+						<a href="#uncategorized" class="list-group-item">
+							<i class="fa fa-chevron-right fa-lg pull-right"></i>
+							<h5 class="list-group-item-heading">More in Uncategorized…</h5>
+						</a>
+					</div>
+					:: #endfor
+				</div>
+				<div class="row">
+					:: for job in featured[3:]:
+					<div class="list-group col-sm-4">
+						<a href="/job/${job.reference}-${job.short}" class="list-group-item">
+							<h4 class="list-group-item-heading">${job.title['en']}</h4>
+							<p class="list-group-item-text category">Uncategorized</p>
+							<p class="list-group-item-text description">${strip_tags(job.description['en']).split('\n')[0]}</p>
+						</a>
+						<a href="#uncategorized" class="list-group-item">
+							<i class="fa fa-chevron-right fa-lg pull-right"></i>
+							<h5 class="list-group-item-heading">More in Uncategorized…</h5>
+						</a>
+					</div>
+					:: #endfor
+				</div>
+				<div class="row">
+				</div>
+			</div>
+		</div>
+	</section>
+	
+	<section id="all" style="">
+		<div class="content">
+			
+			<h3>All Positions</h3>
+			
+			<dl class="dl-horizontal">
+				<dt><h4 id="uncategorized">Uncategorized</h4></dt>
+				<dd>
+					<menu class="list-unstyled">
+						:: for job in jobs.order_by('t.en').only('r', 's', 't', 'd'):
+						<li><a href="/job/${job.reference}-${job.short}">${job.title['en']}</a></li>
+						:: #endfor
+					</menu>
+				</dd>
+			</dl>
+			
+		</div>
+		
+	</section>
+	
+	<footer>
+		<div class="content">
+			<p>© 2015 Alstom.</p>
+			
+			<menu class="list-unstyled">
+				<li><a href="/terms">Terms</a></li>
+				<li><a href="/privacy">Privacy</a></li>
+			</menu>
+		</div>
+	</footer>
+</article>
+
+
+
+
+
+<style>
+	
+	.wc-properties { position: fixed; right: -100%; width: 100%; top: 0; height: 100%; overflow-x: visible; overflow-y: scroll; z-index: 10000; background-color: rgba(0,0,0,0.8); border: 0; border-left: 2px solid black; border-radius: 0; color: #ddd; -webkit-transition: right .5s ease-in-out, width .5s ease-in-out; box-model: border-box; }
+	
+	
+	body.wc-prop-active .wc-properties { right: 0px; }
+	
+	article > section, article > footer, .ih-head-content { -webkit-transition: margin-right .5s ease-in-out; }
+	@media (min-width: 640px) {
+		.wc-properties { right: -320px; width: 320px; }
+		body.wc-prop-active article > section, body.wc-prop-active article > footer,
+		body.wc-prop-active .ih-head-content { margin-right: 320px; }
+	}
+	@media (min-width: 1395px) {
+		.wc-properties { right: -420px; width: 420px; }
+		body.wc-prop-active article > section, body.wc-prop-active article > footer,
+		body.wc-prop-active .ih-head-content { margin-right: 420px; }
+	}
+		
+	.wc-properties-trigger { position: fixed; right: 0px; top: 0px; z-index: 10001; }
+	.wc-properties-trigger a { display: block; position: absolute; top: 0; right: 0; width: 32px; height: 32px; border: 16px solid white; border-left-color: transparent; border-bottom-color: transparent; }
+	.wc-properties-trigger a i { position: absolute; top: -12px; right: -18px; color: black; }
+	
+	.wc-properties .wc-tabs {
+		width: 100%;
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+	
+	.wc-properties .wc-tabs li {
+		display: table-cell;
+		width: 1%;
+		float: none;
+		position: relative;
+	}
+	
+	.wc-properties .wc-tabs li a {
+		border: 2px solid black;
+		border-top-width: 0;
+		background-color: rgba(0,0,0,0.5);
+		text-align: center;
+		line-height: 1.42857143;
+		position: relative;
+		display: block;
+		padding: 10px 15px;
+		text-decoration: none;
+		color: rgba(255,255,255,0.75);
+		text-shadow: 0 1px 0px rgba(0,0,0,.5)
+	}
+	
+	.wc-properties .wc-tabs li a:hover {
+		border-bottom-color: rgba(255,255,255,0.25);
+		color: white;
+	}
+	
+	.wc-properties .wc-tabs li.active a {
+		background-color: transparent;
+		border-color: transparent;
+		border-bottom-color: rgba(255,255,255,0.9);
+		color: white;
+	}
+	
+	.wc-properties { }
+	.wc-properties.panel .list-group-item { background-color: transparent; padding: 15px; border: 0; border-bottom: 2px solid black; }
+	.wc-properties .list-group-item:last-child { border-bottom-width: 0; }
+	
+	.list-group-item > dl { margin: 0; }
+	.list-group-item > dl > dt { margin: 0; text-transform: uppercase; font-size: 12px; font-weight: bold; margin-top: 15px; }
+	.list-group-item > dl > dd { margin: 0; padding: 0; }
+	.list-group-item > dl > dd:last-child { padding-bottom: 0; }
+	
+	.wc-properties h5 { text-transform: uppercase; font-size: 12px; font-weight: bold; margin-top: 20px; }
+	
+	.wc-dn { border-radius: 0; background-color: rgba(255,255,255,0.5); border: none; border-left: 3px solid red; }
+	.wc-dn.wc-dn-ok { border-left-color: green; }
+	.wc-dn.wc-dn-ng { border-left-color: #f0ad4e; }
+	.wc-dn label { display: block; font-weight: bold; text-transform: uppercase; cursor: inherit; }
+	.wc-dn a { color: white; text-shadow: 0 1px 0px rgba(0,0,0,.5); border-radius: 0; }
+	.wc-dn a:hover { color: black; text-shadow: none; border-radius: 0; }
+	.wc-dn .progress { margin: 5px 0; height: 6px; border-radius: 0; }
+	
+	.wc-properties .alert { margin-top: 10px; margin-bottom: 0; }
+	.wc-properties .alert:first-child { margin-top: 0; }
+	
+	/*
+	.wc-properties .panel-heading menu li a { color: rgba(255,255,255,0.75); background-color: transparent; border: 2px solid transparent; border-top-width: 0; border-bottom-color: black; border-radius: 0; }
+	.wc-properties .panel-heading menu li:first-child a { border-left-width: 0; }
+	.wc-properties .panel-heading menu li:last-child a { border-right-width: 0; }
+	.wc-properties .panel-heading menu li + li a { border-left-color: transparent; } 
+	.wc-properties .panel-heading menu li.active + li a { border-left-color: black; } 
+	.wc-properties .panel-heading menu li.active a { color: rgba(255,255,255,0.75); border-bottom-color: transparent; }
+	.wc-properties .panel-heading menu li a:hover, .wc-properties .panel-heading .nav li a:selected { border-width: 2px; border-top-width: 0; border-top-color: transparent; }
+	.wc-properties .panel-heading menu li a:active {  }
+	.wc-properties .panel-heading menu {  }
+	*/
+	
+	.nav-pills.actions li a { background-color: rgba(255, 255, 255, 0.25); color: white; font-weight: bold; text-shadow: 0 1px 0px rgba(0,0,0,.5); font-weight: bold; }
+	.nav-pills.actions li a:hover { background-color: rgba(255, 255, 255, 0.75); color: black; text-shadow: 0 1px 0px rgba(255,255,255,.5); }
+	
+	.wc-properties .list-group-item { overflow: hidden; }
+	
+	.wc-ld { position: absolute; right: 15px; top: 15px; opacity: 0; -webkit-transition: opacity .5s ease-in-out, -webkit-transform .5s ease-in-out; text-shadow: none; -webkit-transform: scale(0); }
+	.loading .wc-ld { opacity: 1; right: 15px; -webkit-transform: scale(1); }
+	.loaded .wc-ld { -webkit-transform: scale(2); }
+	.wc-properties h4 {  }
+	.wc-properties h4 > i { float: right; }
+	.loading h4 > i { opacity: 0; -webkit-transition: opacity .5s ease-in-out, -webkit-transform .5s ease-in-out; -webkit-transform: scale(0); }
+	.loaded h4 > i { opacity: 1; -webkit-transition: .5s opacity .25s ease-in-out, .5s -webkit-transform .25s ease-in-out; -webkit-transform: scale(1); }
+	
+	.loading .content { position: relative; margin-top: -100%; opacity: 0; -webkit-transition: 1s opacity ease-in-out, 1s margin-top ease-in-out; }
+	.loaded .content { position: relative; margin-top: 0; opacity: 1; -webkit-transition: 1s opacity ease-in-out, 1s margin-top ease-in-out; }
+	
+	.wc-cfg-flist { margin: 0; }
+	.wc-cfg-flist menu { margin: 0 0 0 25px; }
+	.wc-cfg-flist a { display: block; margin: 0 -15px; border-bottom: 1px solid black; padding: 10px 15px; color: rgba(255,255,255,0.75); }
+	.wc-cfg-flist a i { color: rgba(255,255,255,0.5); }
+	.wc-cfg-flist a:hover { text-decoration: none; color: white; }
+	.wc-cfg-flist a:hover i { text-decoration: none; color: white; }
+	</style>
+
+<div class="wc-properties panel" role="tabpanel">
+	<ul class="wc-tabs" role="tablist">
+		<li role="presentation" class="active">
+			<a href="#wc-cfg-struct" aria-controls="wc-cfg-site" role="tab" data-toggle="tab" title="Site Settings">
+				<i class="fa fa-sitemap fa-lg"></i>
+				<span class="sr-only">Site Structure</span>
+			</a>
+		</li>
+		<li role="presentation">
+			<a href="#wc-cfg-page" aria-controls="wc-cfg-page" role="tab" data-toggle="tab">
+				<i class="fa fa-newspaper-o fa-lg"></i>
+				<span class="sr-only">Page</span>
+			</a>
+		</li>
+		<li role="presentation" class="disabled">
+			<a href="#wc-cfg-block" aria-controls="wc-cfg-block" role="tab" data-toggle="tab">
+				<i class="fa fa-cube fa-lg"></i>
+				<span class="sr-only">Block</span>
+			</a>
+		</li>
+		<li role="presentation" class="disabled">
+			<a href="#wc-cfg-text" aria-controls="wc-cfg-text" role="tab" data-toggle="tab">
+				<i class="fa fa-edit fa-lg"></i>
+				<span class="sr-only">Content</span>
+			</a>
+		</li>
+		<li role="presentation">
+			<a href="#wc-cfg-site" aria-controls="wc-cfg-site" role="tab" data-toggle="tab" title="Site Settings">
+				<i class="fa fa-cog fa-lg"></i>
+				<span class="sr-only">Site Settings</span>
+			</a>
+		</li>
+	</ul>
+	<div class="tab-content">
+		<ul class="tab-pane active list-group" id="wc-cfg-struct" role="tabpanel">
+			<li class="list-group-item" id="">
+				<h4>
+					Site Structure
+					<a href="#" style="display: inline-block; margin: -10px;"><sup style="display: inline-block; padding: 10px 10px 0;"><i class="fa fa-question-circle small"></i></sup></a>
+				</h4>
+				<menu class="list-unstyled wc-cfg-flist">
+					:: for child in root.children:
+						<li>
+							<a href="${child.path[24:]}">
+								<i class="fa fa-${child.__icon__} fa-lg fa-fw"></i>
+								${child.title['en']}
+							</a>
+							:: if child.children.count():
+							<menu class="list-unstyled">
+							:: for descendant in child.children:
+								<a href="${descendant.path[24:]}">
+									<i class="fa fa-${descendant.__icon__} fa-lg fa-fw"></i>
+									${descendant.title['en']}
+								</a>
+							:: #endfor
+							</menu>
+							:: #endif
+						</li>
+					:: #endfor
+				</menu>
+			</li>
+		</ul>
+		
+		<ul class="tab-pane list-group" id="wc-cfg-page" role="tabpanel">
+			<li class="list-group-item">
+				<h4>
+					General
+					<a href="#" style="display: inline-block; margin: -10px;"><sup style="display: inline-block; padding: 10px 10px 0;"><i class="fa fa-question-circle small"></i></sup></a>
+				</h4>
+				<dl>
+					<dt>Name</dt>
+					<dd>${page.name}</dd>
+					<dt>Title</dt>
+					<dd>${page.title['en']}</dd>
+					<dt>Description</dt>
+					:: if page.description.get('en', None):
+					<dd>${page.title['en']}</dd>
+					:: else:
+					<dd><em>None entered.</em></dd>
+					:: #endif
+					<dt>Tags</dt>
+					:: if page.tags:
+					<dd>${','.join(page.tags)}</dd>
+					:: else:
+					<dd><em>None entered.</em></dd>
+					:: #endif
+					<dt>Created</dt>
+					<dd>${page.created.isoformat()}</dd>
+					<dt>Modified</dt>
+					<dd>${page.modified.isoformat()}</dd>
+				</dl>
+			</li>
+			<!--
+			<li class="list-group-item">
+				<h4>
+					
+					<a href="#" style="display: inline-block; margin: -10px;"><sup style="display: inline-block; padding: 10px 10px 0;"><i class="fa fa-question-circle small"></i></sup></a>
+				</h4>
+			</li>
+			-->
+			<li class="list-group-item" id="">
+				<h4>
+					Block Structure
+					<a href="#" style="display: inline-block; margin: -10px;"><sup style="display: inline-block; padding: 10px 10px 0;"><i class="fa fa-question-circle small"></i></sup></a>
+				</h4>
+				
+				<menu class="list-unstyled wc-cfg-flist">
+					:: for child in page.content:
+					<li>
+						<a href="#${child.id}">
+							<i class="fa fa-${child.__icon__} fa-lg fa-fw"></i>
+							${child}
+						</a>
+					</li>
+				:: #endfor
+			</menu>
+			</li>
+		</ul>
+		
+		<ul class="tab-pane list-group" id="wc-cfg-block" role="tabpanel">
+			<li class="list-group-item">
+				<h4>
+					Text Block
+					<a href="#" style="display: inline-block; margin: -10px;"><sup style="display: inline-block; padding: 10px 10px 0;"><i class="fa fa-question-circle small"></i></sup></a>
+				</h4>
+				<dl>
+					<dt>Unique Identifier</dt>
+					<dd><tt>${page.content[2].id}</tt></dd>
+					<dt>Format Engine</dt>
+					<dd>HTML</dd>
+				</dl>
+			</li>
+			<li class="list-group-item">
+				<h4>
+					Cascading Style Sheets
+					<a href="#" style="display: inline-block; margin: -10px;"><sup style="display: inline-block; padding: 10px 10px 0;"><i class="fa fa-question-circle small"></i></sup></a>
+				</h4>
+				<dl>
+					<dt>Unique Identifier</dt>
+					<dd><em>None entered.</em></dd>
+					<dt>Classes</dt>
+					<dd><tt>${page.content[2].properties.get('cls', "None entered.")}</tt></dd>
+				</dl>
+			</li>
+		</ul>
+		
+		<ul class="tab-pane list-group" id="wc-cfg-site" role="tabpanel">
+			<li class="list-group-item loading" id="wc-p-notice">
+				<h4>
+					<div class="wc-ld"><i class="fa fa-lg fa-refresh fa-spin"></i></div>
+					<i class="fa fa-exclamation-triangle fa-lg text-warning"></i>
+					Important Notices
+					<a href="#" style="display: inline-block; margin: -10px;"><sup style="display: inline-block; padding: 10px 10px 0;"><i class="fa fa-question-circle small"></i></sup></a>
+				</h4>
+				
+				<div class="content">
+					<p role="alert">
+						You will be running into yor mail quota in about a week.  <a href="">Learn more about mail quotas.</a>
+					</p>
+				</div>
+			</li>
+			<li class="list-group-item">
+				
+				<h4>
+					Domains
+					<a href="#" style="display: inline-block; margin: -10px;"><sup style="display: inline-block; padding: 10px 10px 0;"><i class="fa fa-question-circle small"></i></sup></a>
+				</h4>
+				
+				<p>Buy, connect, and manage domains associated with this site.  <a href="">Learn more about domains.</a></p>
+				
+				<ul class="nav nav-pills nav-stacked actions">
+					<li role="presentation" class="primary"><a href="#"><i class="fa fa-cloud fa-lg fa-fw"></i> Get a Domain</a></li>
+					<li role="presentation"><a href="#"><i class="fa fa-external-link-square fa-lg fa-fw"></i> Connect a Third-Party Domain</a></li>
+				</ul>
+				
+				<h5>Third-Party Domains</h5>
+				
+				<ul class="nav nav-pills nav-stacked">
+					<li role="presentation" class="wc-dn wc-dn-ok"><a href="#">
+						<label>careers.alstom.com</label>
+						<div class="">
+							<span class="label label-primary pull-right">Primary</span>
+							<span class="expires">Never Expires</span>
+						</div>
+					</a></li>
+				</ul>
+				
+				<h5>Built-In Domain</h5>
+				
+				<ul class="nav nav-pills nav-stacked">
+					<li role="presentation" class="wc-dn wc-dn-ok"><a href="#">
+						<label>illico-test.webcore.io</label>
+						<div class="">
+							<span class="label label-default pull-right">Development</span>
+							<span class="expires">Never Expires</span>
+						</div>
+					</a></li>
+				</ul>
+				
+			</li>
+			
+			<li class="list-group-item">
+				
+				<h4>
+					<i class="pull-right fa fa-exclamation-triangle fa-lg text-warning"></i>
+					E-Mail
+					<a href="#" style="display: inline-block; margin: -10px;"><sup style="display: inline-block; padding: 10px 10px 0;"><i class="fa fa-question-circle small"></i></sup></a>
+				</h4>
+				
+				<p>Connect and manage mail servers.  <a href="">Learn more about mail.</a></p>
+				
+				<ul class="nav nav-pills nav-stacked actions">
+					<li role="presentation"><a href="#"><i class="fa fa-external-link-square fa-lg fa-fw"></i> Connect a Third-Party Service</a></li>
+				</ul>
+				
+				<h5>Built-In Mail Service</h5>
+				
+				<ul class="nav nav-pills nav-stacked">
+					<li role="presentation" class="wc-dn wc-dn-ng"><a href="#">
+						<label>illico-test.webcore.io</label>
+						<div class="">
+							<span class="label label-primary pull-right">Primary</span>
+							<span class="expires">Sent <strong>18,368</strong> out of <strong>30,000</strong>.</span>
+						</div>
+						:: include('web.theme.bootstrap.template.widget.progress', current=[(30, 'success'), (20, 'warning')], minimum=0, maximum=100)
+					</a></li>
+				</ul>
+				
+			</li>
+			
+			<li class="list-group-item">
+				<h4>
+					Import / Export
+					<a href="#" style="display: inline-block; margin: -10px;"><sup style="display: inline-block; padding: 10px 10px 0;"><i class="fa fa-question-circle small"></i></sup></a>
+				</h4>
+				
+				<ul class="nav nav-pills nav-justified actions">
+					<li role="presentation" class="primary" style="padding-right: 5px;"><a href="#"><i class="fa fa-download fa-lg fa-fw"></i> Import</a></li>
+					<li role="presentation" style="padding-left: 5px;"><a href="#"><i class="fa fa-upload fa-lg fa-fw"></i> Export</a></li>
+				</ul>
+			</li>
+			
+			<!--
+			<li class="list-group-item">
+				<a href="javascript:$('#wc-p-notice').removeClass('loading loaded');">Default</a>
+				<a href="javascript:$('#wc-p-notice').removeClass('loaded').addClass('loading');">Loading</a>
+				<a href="javascript:$('#wc-p-notice').removeClass('loading').addClass('loaded');">Loaded</a>
+			</li>
+			-->
+		</ul>
+		
+		<div role="tabpanel" class="tab-pane" id="wc-cfg-text">
+			
+			<div class="">
+				<h2>Heading 2</h2>
+			</div>
+			
+		</div>
+	</div>
+	
+</div>
+<div class="wc-properties-trigger"><a href="#"><i class="fa fa-pencil fa-flip-horizontal fa-lg fa-fw"></i></a></div>

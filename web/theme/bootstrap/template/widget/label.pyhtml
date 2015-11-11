@@ -1,0 +1,2 @@
+:: #@ARGS label, size, kind
+<span class="label${(' label-' + kind) if kind else ''}">${label}</span>
