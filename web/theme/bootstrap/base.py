@@ -15,7 +15,7 @@
 : end
 
 
-: def page title, header=bootstrap_header, footer=default_footer, metadata=[], styles=[], scripts=[], **attributes
+: def page context, title, header=bootstrap_header, footer=default_footer, metadata=[], styles=[], scripts=[], **attributes
 	: """A general HTML page."""
 	
 	: scripts = ['//cdn.jsdelivr.net/g/jquery@1.11.3,bootstrap@3.3.5(js/bootstrap.js+js/bootstrap.min.js),jquery.cookie@1.4.1,fitvids@1.1.0'] + scripts
