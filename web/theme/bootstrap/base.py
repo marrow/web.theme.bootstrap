@@ -18,8 +18,11 @@
 : def page context, title, header=bootstrap_header, footer=default_footer, metadata=[], styles=[], scripts=[], **attributes
 	: """A general HTML page."""
 	
-	: scripts = ['//cdn.jsdelivr.net/g/jquery@3.6.1,bootstrap@3.4.1/dist/js/bootstrap.min.js,jquery.cookie@1.4.1,fitvids@2.1.1'] + scripts
-	: styles = ['//cdn.jsdelivr.net/fontawesome/4.7.2/css/font-awesome.min.css', '//cdn.jsdelivr.net/g/bootstrap@3.4.1(css/bootstrap.min.css+css/bootstrap-theme.min.css)'] + styles
+	
+	
+	
+	: scripts = ['https://cdn.jsdelivr.net/combine/npm/jquery@1.12.4,npm/bootstrap@3.4.1/dist/js/bootstrap.min.js,npm/jquery.cookie@1.4.1,npm/fitvids.js@1.2.0,npm/sortablejs@1.15.0,npm/imagesloaded@4.1.4'] + scripts
+	: styles = ['//cdn.jsdelivr.net/fontawesome/4.7.2/css/font-awesome.min.css', 'https://cdn.jsdelivr.net/combine/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css,npm/bootstrap@3.4.1/dist/css/bootstrap-theme.min.css'] + styles
 	
 	: return page_(title, header=header, footer=footer, metadata=metadata, styles=styles, scripts=scripts, **attributes)
 : end
